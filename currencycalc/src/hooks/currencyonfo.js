@@ -4,13 +4,13 @@ let useCurrencyInfo=(currency)=>{
     let [data,setData] = useState({})
     useEffect(()=>{
         fetch(url)
-        .than((res)=>{
+        .then((res)=>{
            return res.json();
         })
-        .than((res)=> res[setData] )
+        .then((res)=>setData(res[currency]) )
 
     },[currency])
-    console.log(data);
+    console.log("this is data " + data);
     return data;
 }
 export default useCurrencyInfo;

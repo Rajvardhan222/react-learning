@@ -9,8 +9,9 @@ function App() {
   const [from,setFrom] = useState("usd")
   const [to,setto] = useState("inr")
   let [convertedAmount ,setConvertedAmount] = useState(0)
-    const currencyinfo = usecurrencyonfo(from)
-  let options=  Object.keys(currencyinfo)
+  let currencyinfo = usecurrencyonfo(from)
+  let options =  Object.keys(currencyinfo)
+  console.log(options);
   const swap=()=>{
     setFrom(to);
     setto(from);
@@ -20,12 +21,13 @@ function App() {
   }
   let convert=()=>{
     setConvertedAmount(amount*currencyinfo[to])
+   
 }
   return (
     <div
         className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
         style={{
-            backgroundImage: `url('{https://www.shutterstock.com/shutterstock/photos/1280905663/display_1500/stock-photo-melbourne-victoria-australia-march-the-amazingly-colourful-pixel-building-in-inner-1280905663.jpg}')`
+            backgroundImage: `url(https://images.pexels.com/photos/3260627/pexels-photo-3260627.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)`
         }}
     >
         <div className="w-full">
@@ -41,8 +43,8 @@ function App() {
                             label="From"
                           amount={amount}
                           currencyOptions={options}
-
-                          
+                          onAmountChange = { (amt)=>setAmount(amt)}
+                          onCurrencyChange = {(val)=>setFrom(val)}
                             selectCurrency={from}
                         />
                     </div>
@@ -59,10 +61,15 @@ function App() {
                         <InputBox
                             label="To"
                             amount={convertedAmount}
+                            onAmountChange = { (amt)=>setConvertedAmount(amt)}
                             currencyOptions={options}
+                            selectCurrency={to}
+                            onCurrencyChange = {(val)=>setto(val)}
                         />
                     </div>
-                    <button type="submit" className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg">
+                    <button type="submit" className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg"
+                    onClick = {convert}
+                    >
                         Convert 
                     </button>
                 </form>

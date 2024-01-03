@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types';
+
 
 function InputBox({
    label,
@@ -51,14 +51,5 @@ function InputBox({
 }
 
 
-InputBox.propTypes = {
-    label: PropTypes.string.isRequired,
-    amount: PropTypes.number.isRequired,
-    onAmountChange: PropTypes.func.isRequired,
-    onCurrencyChange: PropTypes.func.isRequired,
-    currencyOptions: PropTypes.arrayOf(PropTypes.string),
-    selectCurrency: PropTypes.string,
-    className: PropTypes.string,
-  };
 
 export default InputBox
