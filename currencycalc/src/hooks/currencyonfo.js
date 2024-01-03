@@ -1,5 +1,5 @@
 import {useState,useEffect} from "react"
-let useCurrencyInfo(currency)=>{
+let useCurrencyInfo=(currency)=>{
     let url = `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${currency}.json`;
     let [data,setData] = useState({})
     useEffect(()=>{

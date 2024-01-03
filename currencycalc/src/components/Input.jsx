@@ -1,5 +1,5 @@
 import React from 'react'
-
+import PropTypes from 'prop-types';
 
 function InputBox({
    label,
@@ -25,7 +25,8 @@ function InputBox({
                     placeholder="Amount"
                    
                     value={amount}
-                    onChange={(e)=>Number(e.target.value)}
+                    onChange={(e) => onAmountChange(Number(e.target.value))}
+
                 />
             </div>
             <div className="w-1/2 flex flex-wrap justify-end text-right">
@@ -33,7 +34,7 @@ function InputBox({
                 <select
                     className="rounded-lg px-1 py-1 bg-gray-100 cursor-pointer outline-none"
                     value={selectCurrency}
-                    onChange={(e)=>e.target.value}
+                    onChange={(e) => onCurrencyChange(e.target.value)}
                    
                 >
                     
@@ -50,6 +51,14 @@ function InputBox({
 }
 
 
-
+InputBox.propTypes = {
+    label: PropTypes.string.isRequired,
+    amount: PropTypes.number.isRequired,
+    onAmountChange: PropTypes.func.isRequired,
+    onCurrencyChange: PropTypes.func.isRequired,
+    currencyOptions: PropTypes.arrayOf(PropTypes.string),
+    selectCurrency: PropTypes.string,
+    className: PropTypes.string,
+  };
 
 export default InputBox
